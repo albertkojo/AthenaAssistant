@@ -1,0 +1,8 @@
+# Core deps will be added as we go, but expect things like:
+# ollama
+# faster-whisper
+# pyaudio or sounddevice
+# piper-tts or coqui-tts
+# pyqt6 or pyside6
+# psutil
+# pyautogui

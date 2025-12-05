@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Models or large data
+models/
+
+# OS / editor stuff
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
