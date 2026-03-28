@@ -1,20 +1,11 @@
-# Athena Assistant
+Athena: Hybrid OS Personal Assistant
+Author: Albert Essiaw
 
-Athena is a local, JARVIS-style AI assistant for Windows.
+Version: 0.1.0 (Pre-Alpha)
 
-- Runs **entirely on my machine** (no paid APIs).
-- Uses a **local LLM via Ollama** as the brain.
-- Supports **voice input (Whisper)** and **British female TTS (Piper/Coqui)**.
-- Can **control the system** through modular "skills" (open apps, manage files, etc.).
-- Has a **floating hologram UI**, **transparent speech bubble**, and **system tray icon**.
+Target OS: Windows 11
 
-## Roadmap
+Project Overview
+Athena is a voice-activated, multimodal desktop assistant engineered for autonomus operating system control and task automation.
 
-- Phase 0 – Environment & skeleton ✅
-- Phase 1 – Text-only chat with local LLM
-- Phase 2 – Voice in / voice out
-- Phase 3 – Wake word ("Athena")
-- Phase 4 – Skills system (Windows control)
-- Phase 5 – Learning & job-helper features
-- Phase 6 – UI (hologram, bubble, tray)
-- Phase 7 – Config, safety, polish
+Due to local hardware constraints, specifically a 4 GB GPU VRAM bottleneck, a fully local Large Language Model (LLM) deployment is unviable for complex tool execution. Athena utilizes a Hybrid Architecture: local hardware handles memory-intensive audio ingestion and processing, while high-speed cloud APIs process logic and state management.
