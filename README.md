@@ -33,30 +33,101 @@ Due to local hardware constraints, specifically a 4 GB GPU VRAM bottleneck, a fu
 ## Implementation Roadmap
 
 ### Phase 1: Core Logic & Base Tool Execution
-* Connect Gemini API to the local environment using the Google GenAI SDK.
-* Define Python functions for OS control (window management, process execution).
-* Implement JSON schema parsing for strict tool calling.
+Establish the baseline text-to-action pipeline.
+
+* **Objective:** Connect the Gemini 1.5 Flash API to your local Windows environment for basic OS control.
+
+* **Components:** Python (os, subprocess), Google GenAI SDK.
+
+* **Target Capabilities:**
+
+    * Define functions for opening applications, managing windows, and basic system queries.
+
+    * Implement strict JSON schema parsing to translate the LLM output into executable Python code.
+
+* **Milestone:** Text input successfully triggers local desktop actions.
 
 ### Phase 2: Audio Pipeline Integration
-* Initialize Porcupine background thread for the "Athena" wake word.
-* Load Whisper model into system memory.
-* Stream text output through `edge-tts` for low-latency voice response.
+Implement local voice ingestion and cloud synthesis to minimize latency.
+
+* **Objective:** Establish reliable, hands-free communication.
+
+* **Components:** Picovoice Porcupine, faster-whisper, edge-tts, pyaudio.
+
+* **Target Capabilities:**
+
+    * Run a lightweight background thread listening for the "Athena" wake word.
+
+    * Load the Whisper model into your 32 GB of system RAM for fast, local speech-to-text.
+
+    * Stream the text response back through edge-tts.
+
+* **Milestone:** Voice input executes a command, and the system verbally confirms completion.
 
 ### Phase 3: Development Automation & Vision
-* Integrate `mss` for base64 screen capture and multimodal code error analysis.
-* Automate workspace initialization (launch VS Code, Android emulator).
-* Implement CLI wrappers to pipe compilation errors (e.g., `flutter run` for The Override) directly back to the logic core.
+Integrate engineering-specific workflows and screen awareness.
+
+* **Objective:** Automate workspace setup and debug assistance.
+
+* **Components:** mss or Pillow (screen capture), CLI wrappers.
+
+* **Target Capabilities:**
+
+    * Pass base64 encoded screen captures to Gemini’s multimodal endpoint for code error analysis.
+
+    * Create multi-step macro tools: e.g., a single command to open VS Code, launch the Android emulator, and run flutter run for The Override.
+
+    * Pipe compilation errors (stderr) directly back to the LLM for automated troubleshooting.
+
+* **Milestone:** Athena visually identifies an error on your screen and executes the necessary CLI commands to recompile a project.
 
 ### Phase 4: Proactive Monitoring & Long-Term Memory
-* Deploy asynchronous threads via `psutil` for hardware telemetry.
-* Set interrupt thresholds to trigger verbal warnings if the CPU temperature exceeds 85°C.
-* Initialize ChromaDB for persistent context retrieval across sessions.
-* Integrate Google Calendar API to parse schedules, prioritizing deadlines for the IEEE SoutheastCon 2026 circuit competition.
+Transition the system from reactive to proactive.
+
+* **Objective:** Enable hardware telemetry and persistent context.
+
+* **Components:** psutil, ChromaDB (local vector database), Google Calendar API.
+
+* **Target Capabilities:**
+
+    * Run asynchronous threads to monitor system states. Athena verbally interrupts if the i7-10750H temperature exceeds 85°C.
+
+    * Store conversation summaries in ChromaDB to recall technical decisions across reboots.
+
+    * Parse scheduled events to provide automated briefings on upcoming commitments, such as deadlines for the SoutheastCon circuits competition.
+
+* **Milestone:** Athena recalls a technical parameter from a session two days prior and warns you of high CPU temperatures while running an emulator.
 
 ### Phase 5: Logistics & Media Control
-* Connect Google Maps API to calculate commute metrics and drive times from Bloomington.
-* Integrate Spotify Web API for headless media playback.
+Connect external data sources for environment and routine management.
+
+* **Objective:** Handle daily logistics outside the local OS.
+
+* **Components:** Google Maps API, Weather API, Spotify Web API, local REST endpoints.
+
+* **Target Capabilities:**
+
+    * Query traffic conditions dynamically to calculate precise commute times from Bloomington.
+
+    * Control media playback (e.g., queuing tech podcasts) via API requests to bypass desktop UI limitations.
+
+    * Send commands to local network devices (smart plugs, lighting) if applicable.
+
+* **Milestone:** A single voice command pauses a podcast, checks local weather, and estimates drive time for your next calendar event.
 
 ### Phase 6: Headless Automation & Publishing
-* Deploy Playwright scripts for automated web transactions, such as portal navigation and reordering from Spicity.
-* Configure local directory watchers to format text files, generate tags, and push content directly to gentlevoid.poetry via social media APIs.
+Deploy web scrapers and headless browsers for complex web tasks.
+
+* **Objective:** Automate repetitive online interactions.
+
+* **Components:** Playwright (headless), BeautifulSoup, Social Media APIs (e.g., Instagram Graph API).
+
+* **Target Capabilities:**
+
+    * Execute Playwright scripts to navigate delivery portals and reorder frequent items (e.g., Dry Pot Beef from Spicity with specific modifiers).
+
+    * Monitor specific URLs for updates and store the diffs in a local SQLite database.
+
+    * Monitor a local directory; when a text file is added, format it, generate tags, and push it live to gentlevoid.poetry.
+
+* **Milestone:** Athena completes a multi-step web transaction or publishes content without any manual browser interaction.
